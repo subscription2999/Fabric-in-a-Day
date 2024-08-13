@@ -1,0 +1,3 @@
+Connection details for FIAD
+Server: wwi-sample-ncus-asql.database.windows.net
+Database: wwi-sample-sqldb

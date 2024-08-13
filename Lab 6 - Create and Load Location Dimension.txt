@@ -1,0 +1,2 @@
+CREATE TABLE dim_location AS
+SELECT * FROM [Lakehouse_WC].[dbo].[Location]

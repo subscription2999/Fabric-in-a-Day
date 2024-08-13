@@ -1,0 +1,8 @@
+CREATE TABLE [dim_customer](
+	[CustomerID] [int] NOT NULL,
+	[CustomerName] [varchar](100) NOT NULL,
+	[PhoneNumber] [varchar](20) NOT NULL
+)
+
+INSERT INTO [dim_customer]
+SELECT CustomerID, CustomerName, PhoneNumber FROM [Lakehouse_WC].[dbo].[Sales_Customers]

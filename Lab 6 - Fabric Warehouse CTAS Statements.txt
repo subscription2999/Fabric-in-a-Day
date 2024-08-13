@@ -1,0 +1,52 @@
+-- Create Package Dimension
+CREATE TABLE dim_package AS
+SELECT * FROM [Silver_Lakehouse_WC].[dbo].[package_type];
+
+-- Create Salesperson Dimension
+CREATE TABLE dim_salesperson AS
+SELECT * FROM [Silver_Lakehouse_WC].[dbo].[salesperson];
+
+-- Create Stock Items Dimension
+Create TABLE dim_stock_items AS
+SELECT * FROM [Lakehouse_WC].[dbo].[Warehouse_StockItems];
+
+-- Create Sales Order Fact
+CREATE TABLE fact_sales_orders AS
+
+SELECT 
+    OrderLineId,
+    OrderId,
+    StockItemId,
+    PackageTypeId,
+    CustomerId,
+    SalespersonPersonId,
+    DeliveryCityId,
+    BillToCustomerId,
+    OrderDate,
+    ExpectedDeliveryDate,
+    Quantity,
+    UnitPrice,
+    TaxRate,
+    PickedQuantity
+FROM 
+    [Silver_Lakehouse_WC].[dbo].[sales_orders]
+
+UNION ALL
+
+SELECT 
+    OrderLineId,
+    OrderId,
+    StockItemId,
+    PackageTypeId,
+    CustomerId,
+    SalespersonPersonId,
+    DeliveryCityId,
+    BillToCustomerId,
+    OrderDate,
+    ExpectedDeliveryDate,
+    Quantity,
+    UnitPrice,
+    TaxRate,
+    PickedQuantity
+FROM 
+    [Silver_Lakehouse_WC].[dbo].[sales_orders_shortcut]
